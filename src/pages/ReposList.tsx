@@ -10,7 +10,6 @@ interface ReposListProps {}
 export const ReposList: FC<ReposListProps> = () => {
   const { user } = useAuth();
   const { data } = useRepositories(!!user);
-  console.log(data);
 
   return (
     <Flex flexDir="column">
