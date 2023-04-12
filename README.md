@@ -1,46 +1,21 @@
-# Getting Started with Create React App
+# How to start
+- `npm install`
+- get a proxy server started
+- create an `.env` file in the project root with following keys
+```sh
+REACT_APP_CLIENT_ID={YOUR_CLIENT_ID}
+REACT_APP_CLIENT_SECRET={YOUR_CLIENT_SECRECT}
+REACT_APP_PROXY_URL=http://localhost:8080
+REACT_APP_REDIRECT_URL=http://localhost:3000
+```
+- `npm start` to start the app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Something you might not be familiar
+- [react-query](https://tanstack.com/query/v3/docs/react/overview), this is a data fetching library, which got a pretty decent API for both caching and fetching with built-in hooks
+- [chakra-ui](https://chakra-ui.com/) for CSS hater like you, which comes very intuitive props system
+- [typescript](https://www.typescriptlang.org/), something you should be aware of as a F2E after 2020, maybe even earlier. you can ignore all the `Promise<SomeType>` or `: SomeType` of `interface` or `type` for now
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Known issues
+- There's some weird behavior when you try to login in every page instead of home page. You can try to fix it, shouldn't be too difficult.
+- The `services` are a lil bit repetitive, you can probably figure out some way to remove all the fetch headers or whatever.
+- There's definitely more bugs in it, because I didn't carefully tested it.

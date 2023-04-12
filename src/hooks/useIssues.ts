@@ -13,7 +13,10 @@ export const useIssues = ({
   enabled: boolean;
 }) => {
   const toast = useToast();
+  // we use useInfiniteQuery, because user should be able to keep load more data when scrolled to bottom
   const query = useInfiniteQuery<IssueResponse | undefined, Error>({
+    // each query with different search terms need to have it's own queryKey
+    // so we have to include `q` in the queryKey
     queryKey: ["issues", { q }],
     queryFn: ({ signal, pageParam = page }) =>
       getIssues({ page: pageParam, q, signal }),
@@ -23,6 +26,7 @@ export const useIssues = ({
         status: "error",
       });
     },
+    // check out services/issues.ts to learn more
     getNextPageParam: (lastPage) => lastPage?.next,
     enabled,
   });

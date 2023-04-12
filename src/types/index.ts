@@ -1,3 +1,5 @@
+// just ignore this file if you are not familiar to typescript
+
 export interface APIResponse<T> {
   error: null | Error;
   response: null | T;

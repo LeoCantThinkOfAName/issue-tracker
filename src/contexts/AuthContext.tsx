@@ -23,6 +23,7 @@ export const AuthContext = createContext<AuthContextInterface>({
   setUser: () => {},
 });
 
+// context to store token and user data during the session
 export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);

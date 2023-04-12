@@ -15,7 +15,10 @@ export const useIssue = ({
 }) => {
   const toast = useToast();
   return useQuery({
+    // construct queryKey with detailed information (number, repo, owner) to be more specific
     queryKey: ["issue", { number, repo, owner }],
+    // the signal thing is for aborting AJAX function if the component unmount
+    // a feature from AbortController if you ever interested
     queryFn: ({ signal }) => getIssue({ number, owner, repo, signal }),
     onError: (error: Error) => {
       toast({

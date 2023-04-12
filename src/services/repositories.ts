@@ -1,3 +1,5 @@
+// AJAX function for getting all repositories from the user
+
 import { API_BASE_URL } from "../constants";
 import { Repository } from "../types";
 import { getToken } from "../utils/token";

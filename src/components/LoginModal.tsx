@@ -17,6 +17,7 @@ export const LoginModal: FC<LoginModalProps> = () => {
   const { loading, user } = useAuth();
 
   return (
+    // the empty onClose function just to keep my IDE to shut up
     <Modal isOpen={!user} onClose={() => {}} isCentered>
       <ModalOverlay />
       <ModalContent>

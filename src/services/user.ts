@@ -1,3 +1,6 @@
+/* AJAX function for getting user's data
+   Since the function is called right after we acquired access_token
+   I figured it will be safer to pass the token as an argument instead using it from localStorage */
 import { API_BASE_URL } from "../constants";
 import { User } from "../types";
 

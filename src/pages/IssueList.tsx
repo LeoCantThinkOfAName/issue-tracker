@@ -29,19 +29,27 @@ export const IssueList: FC<IssueListProps> = () => {
   });
 
   useEffect(() => {
+    // this is a classic way to make a "debounce" function
+    // which will prevents the the function being fired on every mouse scroll stroke
+    // you can just goole "debounce" to learn more
     let timeout: NodeJS.Timeout;
     const loadMore = (_e: Event) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         const root = document.querySelector("#root");
+        // we are only going to load the next page when reach the page ends,
+        // so some calculation are inevitable
         if (window.scrollY === root!.clientHeight - window.innerHeight) {
           fetchNextPage();
         }
+        // fetchNextPage only fires when the scroll stopped after one sec
       }, 1000);
     };
 
+    // just some ol event listener
     window.addEventListener("scroll", loadMore);
     return () => {
+      // do remenber to clear out every listeners and timeout function when teardown
       window.removeEventListener("scroll", loadMore);
       clearTimeout(timeout);
       clearTimeout(inputTimout.current);
@@ -50,6 +58,7 @@ export const IssueList: FC<IssueListProps> = () => {
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     clearTimeout(inputTimout.current);
+    // same as above, we don't want to keep firing AJAX request on every key stroke
     inputTimout.current = setTimeout(() => {
       setQ(e.target.value);
     }, 1000);
@@ -66,6 +75,7 @@ export const IssueList: FC<IssueListProps> = () => {
       </InputGroup>
 
       <OrderedList listStyleType="none" m="0" mt="4">
+        {/* useInfiniteQuery returns a two dimension array, that's why we need two `map` */}
         {data?.pages.map((page) => {
           return page?.items.map((issue, index) => (
             <IssueItem index={index} issue={issue} key={issue.id} />

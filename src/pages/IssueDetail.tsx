@@ -26,6 +26,8 @@ export const IssueDetail: FC<IssueDetailProps> = () => {
   const { user } = useAuth();
   const { repo, number } = useParams();
   const options = {
+    // the full_repo_name is like `User/Repo`, but we only need `Repo` part to get issue
+    // it's kinda ugly... but whatever
     repo: repo!.split("/")[1],
     number: number!,
     owner: user!.login!,

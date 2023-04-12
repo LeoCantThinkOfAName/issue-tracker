@@ -1,3 +1,5 @@
+// AJAX for getting issue list
+
 import { API_BASE_URL } from "../constants";
 import { IssueResponse } from "../types";
 import { getToken } from "../utils/token";
@@ -35,6 +37,10 @@ export const getIssues = async ({
     },
   )
     .then((res) => res.json())
+    // we need a page index reference for infinite scroll function
+    // GitHub API isn't designed to be able to do this
+    // (usually there will be a `cursor` of `next` in the response, which refer to `cursor-based` pagination)
+    // so we have to manually append a `next` property in the response
     .then((res) => ({
       ...res,
       next: res.items.length === 10 ? page + 1 : undefined,

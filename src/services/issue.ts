@@ -1,3 +1,5 @@
+// AJAX for getting and update single issue
+
 import { API_BASE_URL } from "../constants";
 import { Issue } from "../types";
 import { getToken } from "../utils/token";
